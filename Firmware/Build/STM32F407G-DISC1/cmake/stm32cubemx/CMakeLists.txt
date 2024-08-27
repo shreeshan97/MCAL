@@ -12,10 +12,14 @@ target_compile_definitions(stm32cubemx INTERFACE
     $<$<CONFIG:Debug>:DEBUG>
 )
 
+# Add the path variable for Drivers files
 set(DRIVERS "../../../../Drivers/STM32F407G-DISC1/")
 
+# Add the path variable for Hardware files
+set(HARDWARE "../../../../Hardware/STM32F407G-DISC1/")
+
 target_include_directories(stm32cubemx INTERFACE
-    ../../Core/Inc
+    ${HARDWARE}/Inc
     ${DRIVERS}/STM32F4xx_HAL_Driver/Inc
     ${DRIVERS}/STM32F4xx_HAL_Driver/Inc/Legacy
     ${DRIVERS}/CMSIS/Device/ST/STM32F4xx/Include
@@ -23,15 +27,15 @@ target_include_directories(stm32cubemx INTERFACE
 )
 
 target_sources(stm32cubemx INTERFACE
-    ../../Core/Src/main.c
-    ../../Core/Src/gpio.c
-    ../../Core/Src/can.c
-    ../../Core/Src/i2c.c
-    ../../Core/Src/i2s.c
-    ../../Core/Src/spi.c
-    ../../Core/Src/usart.c
-    ../../Core/Src/stm32f4xx_it.c
-    ../../Core/Src/stm32f4xx_hal_msp.c
+    ${HARDWARE}/Src/main.c
+    ${HARDWARE}/Src/gpio.c
+    ${HARDWARE}/Src/can.c
+    ${HARDWARE}/Src/i2c.c
+    ${HARDWARE}/Src/i2s.c
+    ${HARDWARE}/Src/spi.c
+    ${HARDWARE}/Src/usart.c
+    ${HARDWARE}/Src/stm32f4xx_it.c
+    ${HARDWARE}/Src/stm32f4xx_hal_msp.c
     ${DRIVERS}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_can.c
     ${DRIVERS}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
     ${DRIVERS}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
@@ -54,9 +58,9 @@ target_sources(stm32cubemx INTERFACE
     ${DRIVERS}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c
     ${DRIVERS}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c
     ${DRIVERS}/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c
-    ../../Core/Src/system_stm32f4xx.c
-    ../../Core/Src/sysmem.c
-    ../../Core/Src/syscalls.c
+    ${HARDWARE}/Src/system_stm32f4xx.c
+    ${HARDWARE}/Src/sysmem.c
+    ${HARDWARE}/Src/syscalls.c
     ../../startup_stm32f407xx.s
 )
 
