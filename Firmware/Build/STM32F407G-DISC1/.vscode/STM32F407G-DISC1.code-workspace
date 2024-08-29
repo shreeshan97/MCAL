@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../Core"
+		},
+		{
+			"path": "../../../Drivers"
+		},
+		{
+			"path": "../../../Hardware"
+		}
+	],
+	"settings": {}
+}

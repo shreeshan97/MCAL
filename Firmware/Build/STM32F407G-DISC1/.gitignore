@@ -1,5 +1,5 @@
 # Ignored folders
-.vscode/
+.vscode/*.json
 build/
 CMakeFiles/
 
