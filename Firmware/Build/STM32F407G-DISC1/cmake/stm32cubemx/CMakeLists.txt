@@ -27,7 +27,7 @@ target_include_directories(stm32cubemx INTERFACE
 )
 
 target_sources(stm32cubemx INTERFACE
-    ${HARDWARE}/Src/main.c
+    ${HARDWARE}/Src/hardware.c
     ${HARDWARE}/Src/gpio.c
     ${HARDWARE}/Src/can.c
     ${HARDWARE}/Src/i2c.c

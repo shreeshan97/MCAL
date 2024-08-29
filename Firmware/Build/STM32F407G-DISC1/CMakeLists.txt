@@ -21,6 +21,12 @@ endif()
 # Set the project name
 set(CMAKE_PROJECT_NAME STM32F407G-DISC1)
 
+# Add the path variable for Core files
+set(CORE "../../Core/")
+
+# Add the path variable for Common files
+set(COMMON "../../Drivers/Common/")
+
 # Include toolchain file
 include("cmake/gcc-arm-none-eabi.cmake")
 
@@ -47,12 +53,14 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user sources here
+    ${COMMON}/Src/system.c
+    ${CORE}/Src/main.c
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
-    # Add user defined include paths
+    ${COMMON}/Inc
+    ${CORE}/Inc
 )
 
 # Add project symbols (macros)

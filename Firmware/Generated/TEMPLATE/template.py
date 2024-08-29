@@ -50,25 +50,22 @@ header_content = f"""/*
  * Description: This section contains library includes.
  */
 #include "hardware.h"
-#include "systems.h"
+#include "system.h"
 
 /*
  * Section: Defines
  * Description: This section contains macro definitions.
  */
-#define EXAMPLE_CONSTANT 100
 
 /*
  * Section: Typedefs
  * Description: This section contains type definitions.
  */
-typedef unsigned int uint;
 
 /*
  * Section: Variables
  * Description: This section contains external variable declarations.
  */
-extern int global_variable;
 
 /*
  * @brief Brief description of the function.
@@ -89,10 +86,8 @@ extern int global_variable;
  *
  * @see Reference to related functions or documentation.
  */
-void exampleFunction(void);
 
 #endif /* {file_name.upper()}_H */
-
 """
 
 # The C file content
@@ -135,13 +130,11 @@ c_content = f"""/*
  * Section: Defines
  * Description: This section contains macro definitions.
  */
-#define PI_CONSTANT 3.141592
 
 /*
  * Section: Variables
  * Description: This section contains variable definations.
  */
-int global_variable;
 
 /*
  * @brief Brief description of the function.
@@ -162,10 +155,6 @@ int global_variable;
  *
  * @see Reference to related functions or documentation.
  */
-void exampleFunction(void) {{
-    // Function implementation here
-}}
-
 """
 
 # Write the header file
