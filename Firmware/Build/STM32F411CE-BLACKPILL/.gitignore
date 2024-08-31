@@ -1,9 +1,9 @@
 # Ignored folders
-.vscode/*.json
 build/
 CMakeFiles/
 
 # Ignored files
+.vscode/*.json
 build.ninja
 compile_commands.json
 cmake_install.cmake
