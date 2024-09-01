@@ -13,10 +13,10 @@ target_compile_definitions(stm32cubemx INTERFACE
 )
 
 # Add the path variable for Drivers files
-set(DRIVERS "../../../../Drivers/STM32F407G-DISC1/")
+set(DRIVERS "../../../../Drivers/STM32F407G-DISC1/Drivers/")
 
 # Add the path variable for Hardware files
-set(HARDWARE "../../../../Hardware/STM32F407G-DISC1/")
+set(HARDWARE "../../../../Hardware/STM32F407G-DISC1/Hardware/")
 
 target_include_directories(stm32cubemx INTERFACE
     ${HARDWARE}/Inc

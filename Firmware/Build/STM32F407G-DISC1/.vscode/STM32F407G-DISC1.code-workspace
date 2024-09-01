@@ -1,16 +1,24 @@
 {
 	"folders": [
 		{
+			"name": "STM32F407G-DISC1",
 			"path": ".."
 		},
 		{
+			"name": "Drivers",
+			"path": "../../../Drivers/STM32F407G-DISC1/Drivers"
+		},
+		{
+			"name": "Hardware",
+			"path": "../../../Hardware/STM32F407G-DISC1/Hardware"
+		},
+		{
+			"name": "Common",
+			"path": "../../../Drivers/Common"
+		},
+		{
+			"name": "Core",
 			"path": "../../../Core"
-		},
-		{
-			"path": "../../../Drivers"
-		},
-		{
-			"path": "../../../Hardware"
 		}
 	],
 	"settings": {}
