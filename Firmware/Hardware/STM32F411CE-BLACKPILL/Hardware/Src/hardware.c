@@ -1,7 +1,7 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file           : main.c
+  * @file           : hardware.c
   * @brief          : Main program body
   ******************************************************************************
   * @attention
@@ -17,7 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include "hardware.h"
 #include "i2c.h"
 #include "usart.h"
 #include "gpio.h"
@@ -63,7 +63,7 @@ void SystemClock_Config(void);
   * @brief  The application entry point.
   * @retval int
   */
-int main(void)
+void Hardware_Init(void)
 {
 
   /* USER CODE BEGIN 1 */
@@ -94,18 +94,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    HAL_GPIO_TogglePin(LED_GPIO_Port, LED_Pin);
-    HAL_Delay(1000);
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
 }
 
 /**
