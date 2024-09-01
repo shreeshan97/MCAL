@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "STM32F411CE-BLACKPILL",
+			"path": ".."
+		},
+		{
+			"name": "Drivers",
+			"path": "../../../Drivers/STM32F411CE-BLACKPILL/Drivers"
+		},
+		{
+			"name": "Hardware",
+			"path": "../../../Hardware/STM32F411CE-BLACKPILL/Hardware"
+		},
+		{
+			"name": "Common",
+			"path": "../../../Drivers/Common"
+		},
+		{
+			"name": "Core",
+			"path": "../../../Core"
+		}
+	],
+	"settings": {}
+}

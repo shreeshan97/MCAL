@@ -13,10 +13,10 @@ target_compile_definitions(stm32cubemx INTERFACE
 )
 
 # Add the path variable for Drivers files
-set(DRIVERS "../../../../Drivers/STM32F411CE-BLACKPILL/")
+set(DRIVERS "../../../../Drivers/STM32F411CE-BLACKPILL/Drivers/")
 
 # Add the path variable for Hardware files
-set(HARDWARE "../../../../Hardware/STM32F411CE-BLACKPILL/")
+set(HARDWARE "../../../../Hardware/STM32F411CE-BLACKPILL/Hardware/")
 
 target_include_directories(stm32cubemx INTERFACE
     ${HARDWARE}/Inc
