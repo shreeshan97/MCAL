@@ -66,6 +66,8 @@ void Error_Handler(void);
 
 /* USER CODE END Private defines */
 
+void Hardware_Init(void);
+
 #ifdef __cplusplus
 }
 #endif

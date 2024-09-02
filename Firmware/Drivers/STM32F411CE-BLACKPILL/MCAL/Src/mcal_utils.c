@@ -1,8 +1,8 @@
 /*
- * Filename     : system.c
- * Description  : This source file contains system related structures, variables and functions.
+ * Filename     : mcal_utils.c
+ * Description  : This source contains MCAL Layer Utilities. 
  * Author       : Shreesha N.
- * Date         : 2024-08-29
+ * Date         : 2024-09-01
  *
  * MIT License
  *
@@ -31,9 +31,7 @@
  * Section: Includes
  * Description: This section contains library includes.
  */
-#include "system.h"
-#include "mcal_init.h"
-#include "blinky.h"
+#include "mcal_utils.h"
 
 /*
  * Section: Defines
@@ -44,55 +42,23 @@
  * Section: Variables
  * Description: This section contains variable definations.
  */
-/*
- * Section: Variables
- * Description: This section contains external variable declarations.
- */
-// Holds the count of microseconds
-volatile UInt64 usCounter = 0x00U;
-
-// Holds the count of milliseconds
-volatile UInt64 msCounter = 0x00U;
 
 /*
- * @brief Initialize the system.
+ * @brief Brief description of the function.
  *
- * @return System States
+ * Detailed description of the function. 
  *
- * @note System is initialized.
+ * @param[in] param1 Description of the first input parameter.
  * 
+ * @param[out] param2 Description of the second parameter, if applicable. 
+ *                    Include the type and purpose.
+ *
+ * @return Description of the return value.
+ *
+ * @note Any additional notes.
+ *
+ * @warning Any warnings about the function's use, potential issues, 
+ *          or special considerations.
+ *
+ * @see Reference to related functions or documentation.
  */
-System_States System_Init(void)
-{
-    // Initialize MCAL Layers
-    MCAL_Init();
-    return SYS_INIT;
-}
-
-/*
- * @brief Background tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system background.
- * 
- */
-System_States System_Background(void)
-{
-    // Running blinky task
-    Blinky();
-    return SYS_RUNNING;
-}
-
-/*
- * @brief Foreground tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system foreground.
- * 
- */
-System_States System_Foreground(void)
-{
-    return SYS_RUNNING;
-}

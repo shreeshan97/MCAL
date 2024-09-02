@@ -1,8 +1,8 @@
 /*
- * Filename     : system.c
- * Description  : This source file contains system related structures, variables and functions.
+ * Filename     : mcal_delay.c
+ * Description  : This source file contains MCAL Delay Layer.
  * Author       : Shreesha N.
- * Date         : 2024-08-29
+ * Date         : 2024-09-01
  *
  * MIT License
  *
@@ -31,9 +31,7 @@
  * Section: Includes
  * Description: This section contains library includes.
  */
-#include "system.h"
-#include "mcal_init.h"
-#include "blinky.h"
+#include "mcal_delay.h"
 
 /*
  * Section: Defines
@@ -44,55 +42,25 @@
  * Section: Variables
  * Description: This section contains variable definations.
  */
-/*
- * Section: Variables
- * Description: This section contains external variable declarations.
- */
-// Holds the count of microseconds
-volatile UInt64 usCounter = 0x00U;
-
-// Holds the count of milliseconds
-volatile UInt64 msCounter = 0x00U;
 
 /*
- * @brief Initialize the system.
+ * @brief Add the delay when called.
  *
- * @return System States
+ * Delay is added to the code. 
  *
- * @note System is initialized.
+ * @param[in] Takes milliseconds as input.
  * 
+ *
+ * @return 0
+ *
+ * @note This a blocking code.
+ *
+ * @warning As this is blocking code, system is non responsive when function is called.
+ *
+ * @see Refer STM32 HAL_Delay function.
  */
-System_States System_Init(void)
+void MCAL_Delay(UInt32 millisecond)
 {
-    // Initialize MCAL Layers
-    MCAL_Init();
-    return SYS_INIT;
-}
-
-/*
- * @brief Background tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system background.
- * 
- */
-System_States System_Background(void)
-{
-    // Running blinky task
-    Blinky();
-    return SYS_RUNNING;
-}
-
-/*
- * @brief Foreground tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system foreground.
- * 
- */
-System_States System_Foreground(void)
-{
-    return SYS_RUNNING;
+    HAL_Delay((uint32_t) millisecond);
+    return;
 }

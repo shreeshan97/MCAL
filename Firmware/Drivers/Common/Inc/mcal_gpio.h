@@ -1,8 +1,8 @@
 /*
- * Filename     : system.c
- * Description  : This source file contains system related structures, variables and functions.
+ * Filename     : mcal_gpio.h
+ * Description  : This header file contains MCAL GPIO Layer.
  * Author       : Shreesha N.
- * Date         : 2024-08-29
+ * Date         : 2024-09-01
  *
  * MIT License
  *
@@ -27,72 +27,84 @@
  * SOFTWARE.
  */
 
+#ifndef MCAL_GPIO_H
+#define MCAL_GPIO_H
+
 /*
  * Section: Includes
  * Description: This section contains library includes.
  */
-#include "system.h"
-#include "mcal_init.h"
-#include "blinky.h"
+#include "utils.h"
+#include "gpio.h"
 
 /*
  * Section: Defines
  * Description: This section contains macro definitions.
  */
 
+
 /*
- * Section: Variables
- * Description: This section contains variable definations.
+ * Section: Enum
+ * Description: This section contains macro definitions.
  */
+// GPIO Pin Type
+typedef enum
+{
+    DIGITAL_INPUT = 0x00U,
+    ANALOG_INPUT,
+    DIGITAL_OUTUT,
+    ANALOG_OUTUT,
+}GPIO_Type;
+
+/*
+ * Section: Typedefs
+ * Description: This section contains type definitions.
+ */
+// GPIO Control Structure
+typedef struct 
+{
+    UInt32 pin;        // GPIO pin number
+    UInt32 port;       // GPIO port number
+    UInt32 value;      // GPIO output/input/analog value
+    UInt32 type;       // GPIO pin type
+}GPIO_Param;
+
 /*
  * Section: Variables
  * Description: This section contains external variable declarations.
  */
-// Holds the count of microseconds
-volatile UInt64 usCounter = 0x00U;
-
-// Holds the count of milliseconds
-volatile UInt64 msCounter = 0x00U;
 
 /*
- * @brief Initialize the system.
+ * @brief Toggles GPIO pin.
  *
- * @return System States
+ * @param[in] Takes GPIO_Param structure.
  *
- * @note System is initialized.
- * 
+ * @return 0
+ *
+ * @see Refer STM32 HAL_GPIO_TogglePin function
  */
-System_States System_Init(void)
-{
-    // Initialize MCAL Layers
-    MCAL_Init();
-    return SYS_INIT;
-}
+extern UInt32 MCAL_GPIO_Toggle(GPIO_Param *gpio_param);
 
 /*
- * @brief Background tasks of the system.
+ * @brief Sets GPIO pin.
  *
- * @return System States
+ * @param[in] Takes GPIO_Param structure.
  *
- * @note Tasks are running in system background.
- * 
+ * @return 0
+ *
+ * @see Refer STM32 HAL_GPIO_WritePin function
  */
-System_States System_Background(void)
-{
-    // Running blinky task
-    Blinky();
-    return SYS_RUNNING;
-}
+extern UInt32 MCAL_GPIO_Set(GPIO_Param *gpio_param);
 
 /*
- * @brief Foreground tasks of the system.
+ * @brief Resets GPIO pin.
  *
- * @return System States
+ * @param[in] Takes GPIO_Param structure.
  *
- * @note Tasks are running in system foreground.
- * 
+ * @return 0
+ *
+ * @see Refer STM32 HAL_GPIO_WritePin function
  */
-System_States System_Foreground(void)
-{
-    return SYS_RUNNING;
-}
+extern UInt32 MCAL_GPIO_Reset(GPIO_Param *gpio_param);
+
+#endif /* MCAL_GPIO_H */

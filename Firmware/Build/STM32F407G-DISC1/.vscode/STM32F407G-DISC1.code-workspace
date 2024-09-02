@@ -17,6 +17,10 @@
 			"path": "../../../Drivers/Common"
 		},
 		{
+			"name": "MCAL",
+			"path": "../../../Drivers/STM32F407G-DISC1/MCAL"
+		},
+		{
 			"name": "Core",
 			"path": "../../../Core"
 		}

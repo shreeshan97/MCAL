@@ -45,17 +45,17 @@
  * Section: Typedefs
  * Description: This section contains type definitions.
  */
-typedef uint8_t     TBool;
-typedef int8_t      TInt8;
-typedef int16_t     TInt16;      
-typedef int32_t     TInt32;
-typedef int64_t     TInt64;
-typedef uint8_t     TUInt8;
-typedef uint16_t    TUInt16;
-typedef uint32_t    TUInt32;
-typedef uint64_t    TUInt64;
-typedef float       TFloat;
-typedef double      TDouble;
+typedef uint8_t     Bool;
+typedef int8_t      Int8;
+typedef int16_t     Int16;      
+typedef int32_t     Int32;
+typedef int64_t     Int64;
+typedef uint8_t     UInt8;
+typedef uint16_t    UInt16;
+typedef uint32_t    UInt32;
+typedef uint64_t    UInt64;
+typedef float       Float;
+typedef double      Double;
 
 /*
  * Section: Variables

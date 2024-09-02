@@ -1,8 +1,8 @@
 /*
- * Filename     : system.c
- * Description  : This source file contains system related structures, variables and functions.
+ * Filename     : mcal_init.c
+ * Description  : This source file contains MCAL Layer Peripheral Initialization.
  * Author       : Shreesha N.
- * Date         : 2024-08-29
+ * Date         : 2024-09-01
  *
  * MIT License
  *
@@ -31,9 +31,7 @@
  * Section: Includes
  * Description: This section contains library includes.
  */
-#include "system.h"
 #include "mcal_init.h"
-#include "blinky.h"
 
 /*
  * Section: Defines
@@ -44,55 +42,24 @@
  * Section: Variables
  * Description: This section contains variable definations.
  */
-/*
- * Section: Variables
- * Description: This section contains external variable declarations.
- */
-// Holds the count of microseconds
-volatile UInt64 usCounter = 0x00U;
-
-// Holds the count of milliseconds
-volatile UInt64 msCounter = 0x00U;
+// Activity LED pointer
+GPIO_Param ActivityLED;
 
 /*
- * @brief Initialize the system.
+ * @brief Initialize all peripheral with MCAL layer.
  *
- * @return System States
+ * @return MCAL Status value.
  *
- * @note System is initialized.
- * 
+ * @note Call this function to initialize all peripherals.
+ *
  */
-System_States System_Init(void)
+MCAL_Status MCAL_Init(void)
 {
-    // Initialize MCAL Layers
-    MCAL_Init();
-    return SYS_INIT;
-}
+    // Initialize Activity LED
+    ActivityLED.pin   = LED_Pin;
+    ActivityLED.port  = (UInt32) LED_GPIO_Port;
+    ActivityLED.type  = DIGITAL_OUTUT;
+    ActivityLED.value = RESET;
 
-/*
- * @brief Background tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system background.
- * 
- */
-System_States System_Background(void)
-{
-    // Running blinky task
-    Blinky();
-    return SYS_RUNNING;
-}
-
-/*
- * @brief Foreground tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system foreground.
- * 
- */
-System_States System_Foreground(void)
-{
-    return SYS_RUNNING;
+    return MCAL_OK;
 }

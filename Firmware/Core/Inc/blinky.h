@@ -1,8 +1,8 @@
 /*
- * Filename     : system.c
- * Description  : This source file contains system related structures, variables and functions.
+ * Filename     : blinky.h
+ * Description  : This header file contains Blinky function.
  * Author       : Shreesha N.
- * Date         : 2024-08-29
+ * Date         : 2024-09-01
  *
  * MIT License
  *
@@ -27,13 +27,16 @@
  * SOFTWARE.
  */
 
+#ifndef BLINKY_H
+#define BLINKY_H
+
 /*
  * Section: Includes
  * Description: This section contains library includes.
  */
-#include "system.h"
 #include "mcal_init.h"
-#include "blinky.h"
+#include "mcal_gpio.h"
+#include "mcal_delay.h"
 
 /*
  * Section: Defines
@@ -41,58 +44,23 @@
  */
 
 /*
- * Section: Variables
- * Description: This section contains variable definations.
+ * Section: Typedefs
+ * Description: This section contains type definitions.
  */
+
 /*
  * Section: Variables
  * Description: This section contains external variable declarations.
  */
-// Holds the count of microseconds
-volatile UInt64 usCounter = 0x00U;
-
-// Holds the count of milliseconds
-volatile UInt64 msCounter = 0x00U;
 
 /*
- * @brief Initialize the system.
+ * @brief Activity LED Blink.
  *
- * @return System States
+ * Toggles Activity LED at 1 seconds. 
  *
- * @note System is initialized.
+ * @warning This is blocking function. 
  * 
  */
-System_States System_Init(void)
-{
-    // Initialize MCAL Layers
-    MCAL_Init();
-    return SYS_INIT;
-}
+void Blinky(void);
 
-/*
- * @brief Background tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system background.
- * 
- */
-System_States System_Background(void)
-{
-    // Running blinky task
-    Blinky();
-    return SYS_RUNNING;
-}
-
-/*
- * @brief Foreground tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system foreground.
- * 
- */
-System_States System_Foreground(void)
-{
-    return SYS_RUNNING;
-}
+#endif /* BLINKY_H */

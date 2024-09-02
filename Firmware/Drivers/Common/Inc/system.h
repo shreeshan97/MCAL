@@ -1,6 +1,6 @@
 /*
  * Filename     : system.h
- * Description  : Brief description of what this header file does.
+ * Description  : This header file contains system related defines, enums, structures, variables and functions.
  * Author       : Shreesha N.
  * Date         : 2024-08-29
  *
@@ -42,33 +42,77 @@
  */
 
 /*
+ * Section: Enum
+ * Description: This section contains macro definitions.
+ */
+// System States
+typedef enum
+{
+    SYS_RESET = 0x00U,
+    SYS_INIT,
+    SYS_RUNNING,
+    SYS_HALT,
+    SYS_FAIL,
+    SYS_DEAD
+}System_States;
+
+// System States
+typedef enum
+{
+    FALSE = 0x00U,
+    TRUE  = 0x01U,
+}Boolean_States;
+
+/*
  * Section: Typedefs
  * Description: This section contains type definitions.
  */
+// System Parameters
+typedef struct
+{
+    System_States state;
+    UInt64 uptime;
+    UInt32 error;
+}System_Param;
 
 /*
  * Section: Variables
  * Description: This section contains external variable declarations.
  */
+// Holds the count of microseconds
+extern volatile UInt64 usCounter;
+
+// Holds the count of milliseconds
+extern volatile UInt64 msCounter;
 
 /*
- * @brief Brief description of the function.
+ * @brief Initialize the system.
  *
- * Detailed description of the function. 
+ * @return System States
  *
- * @param[in] param1 Description of the first input parameter.
+ * @note System is initialized.
  * 
- * @param[out] param2 Description of the second parameter, if applicable. 
- *                    Include the type and purpose.
- *
- * @return Description of the return value.
- *
- * @note Any additional notes.
- *
- * @warning Any warnings about the function's use, potential issues, 
- *          or special considerations.
- *
- * @see Reference to related functions or documentation.
  */
+System_States System_Init(void);
+
+/*
+ * @brief Background tasks of the system.
+ *
+ * @return System States
+ *
+ * @note Tasks are running in system background.
+ * 
+ */
+System_States System_Background(void);
+
+/*
+ * @brief Foreground tasks of the system.
+ *
+ * @return System States
+ *
+ * @note Tasks are running in system foreground.
+ * 
+ */
+System_States System_Foreground(void);
 
 #endif /* SYSTEM_H */

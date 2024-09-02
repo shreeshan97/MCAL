@@ -1,6 +1,6 @@
 /*
  * Filename     : utils.c
- * Description  : Brief description of what this source file does.
+ * Description  : This source file contains essential structures and variables initialization.
  * Author       : Shreesha N.
  * Date         : 2024-08-29
  *

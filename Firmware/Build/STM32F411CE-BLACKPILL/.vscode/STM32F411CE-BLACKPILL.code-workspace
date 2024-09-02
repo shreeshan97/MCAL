@@ -17,6 +17,10 @@
 			"path": "../../../Drivers/Common"
 		},
 		{
+			"name": "MCAL",
+			"path": "../../../Drivers/STM32F411CE-BLACKPILL/MCAL"
+		},
+		{
 			"name": "Core",
 			"path": "../../../Core"
 		}

@@ -1,6 +1,6 @@
 /*
  * Filename     : main.c
- * Description  : Brief description of what this source file does.
+ * Description  : This source file contains the main function.
  * Author       : Shreesha N.
  * Date         : 2024-08-29
  *
@@ -44,32 +44,23 @@
  */
 
 /*
- * @brief Brief description of the function.
+ * @brief Runs the main() of the project.
  *
- * Detailed description of the function. 
+ * @note Contains the initialization and looping subroutine. 
  *
- * @param[in] param1 Description of the first input parameter.
- * 
- * @param[out] param2 Description of the second parameter, if applicable. 
- *                    Include the type and purpose.
- *
- * @return Description of the return value.
- *
- * @note Any additional notes.
- *
- * @warning Any warnings about the function's use, potential issues, 
- *          or special considerations.
- *
- * @see Reference to related functions or documentation.
  */
-int main(void) 
+int main(void)
 {
+    // Initialize all hardware peripherals
     Hardware_Init();
 
-    while (1)
-    {
-        HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
-        HAL_Delay(1000);
-    }
-}
+    // Initialize all system tasks
+    System_Init();
 
+    while(TRUE)
+    {
+        // Run system background tasks
+        System_Background();     
+    }
+    return 0;
+}

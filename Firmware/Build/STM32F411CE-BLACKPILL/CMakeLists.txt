@@ -27,6 +27,9 @@ set(CORE "../../Core/")
 # Add the path variable for Common files
 set(COMMON "../../Drivers/Common/")
 
+# Add the path variable for Common files
+set(MCAL "../../Drivers/STM32F411CE-BLACKPILL/MCAL/")
+
 # Include toolchain file
 include("cmake/gcc-arm-none-eabi.cmake")
 
@@ -53,12 +56,18 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
+    ${MCAL}/Src/mcal_utils.c
+    ${MCAL}/Src/mcal_gpio.c
+    ${MCAL}/Src/mcal_delay.c
+    ${MCAL}/Src/mcal_init.c
     ${COMMON}/Src/system.c
+    ${CORE}/Src/blinky.c
     ${CORE}/Src/main.c
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
+    ${MCAL}/Inc
     ${COMMON}/Inc
     ${CORE}/Inc
 )

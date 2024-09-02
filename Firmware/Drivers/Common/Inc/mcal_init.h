@@ -1,8 +1,8 @@
 /*
- * Filename     : system.c
- * Description  : This source file contains system related structures, variables and functions.
+ * Filename     : mcal_init.h
+ * Description  : This header file contains MCAL Layer Peripheral Initialization.
  * Author       : Shreesha N.
- * Date         : 2024-08-29
+ * Date         : 2024-09-01
  *
  * MIT License
  *
@@ -27,13 +27,15 @@
  * SOFTWARE.
  */
 
+#ifndef MCAL_INIT_H
+#define MCAL_INIT_H
+
 /*
  * Section: Includes
  * Description: This section contains library includes.
  */
-#include "system.h"
-#include "mcal_init.h"
-#include "blinky.h"
+#include "mcal_utils.h"
+#include "mcal_gpio.h"
 
 /*
  * Section: Defines
@@ -41,58 +43,25 @@
  */
 
 /*
- * Section: Variables
- * Description: This section contains variable definations.
+ * Section: Typedefs
+ * Description: This section contains type definitions.
  */
+
 /*
  * Section: Variables
  * Description: This section contains external variable declarations.
  */
-// Holds the count of microseconds
-volatile UInt64 usCounter = 0x00U;
-
-// Holds the count of milliseconds
-volatile UInt64 msCounter = 0x00U;
+// Activity LED strurture
+extern GPIO_Param ActivityLED;
 
 /*
- * @brief Initialize the system.
+ * @brief Initialize all peripheral with MCAL layer.
  *
- * @return System States
+ * @return MCAL Status value.
  *
- * @note System is initialized.
- * 
+ * @note Call this function to initialize all peripherals.
+ *
  */
-System_States System_Init(void)
-{
-    // Initialize MCAL Layers
-    MCAL_Init();
-    return SYS_INIT;
-}
+MCAL_Status MCAL_Init(void);
 
-/*
- * @brief Background tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system background.
- * 
- */
-System_States System_Background(void)
-{
-    // Running blinky task
-    Blinky();
-    return SYS_RUNNING;
-}
-
-/*
- * @brief Foreground tasks of the system.
- *
- * @return System States
- *
- * @note Tasks are running in system foreground.
- * 
- */
-System_States System_Foreground(void)
-{
-    return SYS_RUNNING;
-}
+#endif /* MCAL_INIT_H */
